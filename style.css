@@ -3,6 +3,7 @@
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
+    overflow: hidden;
 }
 
 p,
@@ -19,7 +20,6 @@ body {
     text-align: center;
     margin: 0;
     padding: 0;
-    overflow: hidden;
 }
 
 #content {
@@ -27,19 +27,21 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    /* set height to viewport height */
-    height: 80vh;
+    height: 100vh;
+}
+
+.starter {
+    /* override font size */
+    font-size: 12rem !important;
 }
 
 #breaker {
-    font-size: 100px;
-    margin: 20px;
+    font-size: 3.5rem;
+    margin: 3vh;
     background-color: #fff;
-    padding: 20px;
-    padding-left: 40px;
-    padding-right: 40px;
-    border-radius: 10px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+    padding: 2.5vh;
+    border-radius: 2vh;
+    box-shadow: 0 0 2vh rgba(0, 0, 0, 0.3);
 }
 
 .background {
@@ -71,7 +73,7 @@ body {
     }
 
     50% {
-        transform: translateY(10px);
+        transform: translateY(1vh);
 
     }
 }

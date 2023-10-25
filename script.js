@@ -7,9 +7,9 @@ function showRandomBreaker() {
     var randomBreaker = breakers[randomNumber];
 
     var breaker = document.getElementById("breaker");
+    // remove class starter from breaker
+    breaker.classList.remove("starter");
     breaker.innerHTML = randomBreaker;
-    // update fontsize to 30
-    breaker.style.fontSize = "30px";
 
 }
 
@@ -25,14 +25,14 @@ function createEmoji(emoji) {
 
     const maxX = window.innerWidth;
     const maxY = window.innerHeight;
-    const randomX = (Math.random() * maxX);
-    const randomY = (Math.random() * maxY);
+    const randomX = (randomNormal() * maxX * 0.7) + (0.15 * maxX);
+    const randomY = (randomNormal() * maxY * 0.7) + (0.15 * maxY);
     e.style.left = `${randomX}px`;
     e.style.top = `${randomY}px`;
 
-    const emojiSize = ((Math.random() * 30) + 35);
-    e.style.fontSize = `${emojiSize}px`;
-    e.style.opacity = `${emojiSize / 2}%`;
+    const emojiSize = ((Math.random() * 3) + 3);
+    e.style.fontSize = `${emojiSize}rem`;
+    e.style.opacity = `${emojiSize * 5}%`;
 
     e.style.rotate = `${(Math.random() * 360)}deg`;
     e.style.animation = `bob ${(Math.random() * 2) + 3}s ease-in-out infinite`;
@@ -59,6 +59,14 @@ function loadBreakers() {
             breakers = data.split("\n");
         })
         .catch(error => console.error("Error loading the text file:", error));
+}
+
+function randomNormal() {
+    // generate a random number from a normal distribution, between 0-1
+    let u = 0, v = 0;
+    while (u === 0) u = Math.random(); // Converting [0,1) to (0,1)
+    while (v === 0) v = Math.random();
+    return Math.sqrt(-2.0 * Math.log(u)) * Math.cos(2.0 * Math.PI * v);
 }
 
 loadBreakers()
